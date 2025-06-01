@@ -354,7 +354,7 @@ app.post('/ask', async (req, res) => {
             model: 'gpt-4.1'
         }, {
             headers: {
-                'Authorization': `Bearer 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`, // Replace YOUR_API_KEY with your OpenAI API key
+                'Authorization': `Bearer APIKEY`, // Replace YOUR_API_KEY with your OpenAI API key
                 'Content-Type': 'application/json'
             }
         });
