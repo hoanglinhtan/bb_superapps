@@ -2,6 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const net = require('net');
+const bodyParser = require('body-parser');
+const axios = require('axios'); // Add axios for making HTTP requests
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +16,9 @@ if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir, { recursive: true });
     console.log('Created uploads directory');
 }
+
+// Middleware to parse JSON requests
+app.use(bodyParser.json());
 
 // Define MIME types for BlackBerry specific files
 app.use((req, res, next) => {
@@ -331,68 +336,119 @@ app.get('/testcallapi', (req, res) => {
     res.send('Hello from /testcallapi at ' + new Date().toLocaleTimeString());
 });
 
-// Modify the /test endpoint to call /testcallapi and paste the response text into the text box
+// Add a new API endpoint /ask to handle ChatGPT requests
+app.post('/ask', async (req, res) => {
+    const userQuestion = req.body.question;
+
+    if (!userQuestion) {
+        return res.status(400).json({ error: 'Question is required' });
+    }
+
+    console.log(`Received question: ${userQuestion}`);
+
+    try {
+        // Replace with actual ChatGPT API call
+        const chatGPTResponse = await axios.post('https://api.openai.com/v1/chat/completions', {
+            prompt: userQuestion,
+            max_tokens: 100,
+            model: 'gpt-4.1'
+        }, {
+            headers: {
+                'Authorization': `Bearer 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`, // Replace YOUR_API_KEY with your OpenAI API key
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const answer = chatGPTResponse.data.choices[0].text.trim();
+        res.json({ answer });
+    } catch (error) {
+        console.error('Error calling ChatGPT API:', error.message);
+        res.status(500).json({ error: 'Failed to get response from ChatGPT' });
+    }
+});
+
+// Modify the /test endpoint to include a simple chat UI compatible with ES5
 app.get('/test', (req, res) => {
     const html = `
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Test Page</title>
+        <title>ChatGPT Web UI</title>
         <style>
             body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
             h1 { color: #333; }
-            #text-container { 
-                border: 1px solid #ccc; 
-                padding: 10px; 
-                min-height: 100px;
-                margin-top: 20px;
-                background-color: #f9f9f9;
-            }
-            button { 
-                margin-top: 10px; 
-                padding: 10px 20px; 
-                background-color: #0066cc; 
-                color: white; 
-                border: none; 
-                border-radius: 5px; 
-                cursor: pointer; 
-            }
-            button:hover { background-color: #004c99; }
+            #chat-container { border: 1px solid #ccc; padding: 10px; min-height: 300px; margin-top: 20px; background-color: #f9f9f9; }
+            .message { margin: 5px 0; padding: 5px; }
+            .user-message { background-color: #e6f7ff; border-left: 3px solid #33adff; }
+            .bot-message { background-color: #f5f5f5; border-left: 3px solid #cccccc; }
+            #question-input { width: calc(100% - 110px); padding: 10px; margin-top: 10px; }
+            #send-button { padding: 10px; background-color: #0066cc; color: white; border: none; border-radius: 5px; cursor: pointer; }
+            #send-button:hover { background-color: #004c99; }
         </style>
     </head>
     <body>
-        <h1>Test Page</h1>
-        <p>Text will be automatically added to the box every 5 seconds by calling an API.</p>
-        <div id="text-container">Initial Text</div>
+        <h1>ChatGPT Web UI</h1>
+        <div id="chat-container"></div>
+        <div>
+            <input type="text" id="question-input" placeholder="Type your question here..." />
+            <button id="send-button">Send</button>
+        </div>
 
         <script>
-            // Counter for message numbering
-            var counter = 1;
+            var chatContainer = document.getElementById('chat-container');
+            var questionInput = document.getElementById('question-input');
+            var sendButton = document.getElementById('send-button');
 
-            // Function to call the API and add text to the container
-            function addTextFromApi() {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/testcallapi', true);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        var textContainer = document.getElementById('text-container');
-                        var responseText = xhr.responseText;
-
-                        // Append new text
-                        textContainer.innerHTML += '<br>Message #' + counter + ' - ' + responseText;
-
-                        // Increment the counter
-                        counter++;
-                    }
-                };
-                xhr.send();
+            // Function to add a message to the chat container
+            function addMessage(text, isUser) {
+                var messageDiv = document.createElement('div');
+                messageDiv.className = 'message ' + (isUser ? 'user-message' : 'bot-message');
+                messageDiv.textContent = text;
+                chatContainer.appendChild(messageDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
             }
 
-            // Add initial text from API
-            addTextFromApi();
+            // Function to send a question to the backend
+            function sendQuestion() {
+                var question = questionInput.value.trim();
+                if (!question) return;
 
-            // Set up interval to call the API and add text every 5 seconds
-            setInterval(addTextFromApi, 5000);
+                // Add user message to chat
+                addMessage(question, true);
+
+                // Clear input field
+                questionInput.value = '';
+
+                // Send question to backend
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/ask', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.answer) {
+                                addMessage(response.answer, false);
+                            } else {
+                                addMessage('Error: Failed to get response from ChatGPT', false);
+                            }
+                        } else {
+                            addMessage('Error: Failed to send request', false);
+                        }
+                    }
+                };
+                xhr.send(JSON.stringify({ question: question }));
+            }
+
+            // Add event listener to send button
+            sendButton.addEventListener('click', sendQuestion);
+
+            // Add event listener for Enter key
+            questionInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    sendQuestion();
+                }
+            });
         </script>
     </body>
     </html>
