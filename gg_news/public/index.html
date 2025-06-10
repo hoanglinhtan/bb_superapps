@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google News</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+    <div id="header">
+        <h1>Google News</h1>
+        <div id="menu">
+            <a href="#" onclick="App.showGlobalNews()">Global</a>
+            <a href="#" onclick="App.showVietnamNews()">Vietnam</a>
+        </div>
+    </div>
+
+    <div id="content"></div>
+
+    <div id="footer">
+        <p>&copy; 2024 Google News</p>
+    </div>
+
+    <script type="text/javascript" src="js/modules/news/global.js"></script>
+    <script type="text/javascript" src="js/modules/news/vietnam.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

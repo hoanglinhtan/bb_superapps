@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+#header {
+    background-color: #1877f2;
+    color: white;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#menu {
+    margin-top: 10px;
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+#menu a:hover {
+    background-color: #555;
+}
+
+#content {
+    padding: 20px;
+    min-height: 300px;
+}
+
+#footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* Module Styles */
+.feed-item, .message-item, .notification-item {
+    padding: 12px;
+    margin: 8px 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.feed-item:hover, .message-item:hover, .notification-item:hover {
+    background-color: #f5f6f7;
+}
+
+/* Feed Specific Styles */
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+    color: #1877f2;
+}
+
+.post-time {
+    color: #65676b;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.post-content {
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.post-actions {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.post-actions span {
+    margin-right: 20px;
+    color: #65676b;
+    cursor: pointer;
+}
+
+.post-actions span:hover {
+    color: #1877f2;
+}
+
+.post-stats {
+    font-size: 12px;
+    color: #65676b;
+    margin-top: 10px;
+}
+
+.post-link {
+    background: #f0f2f5;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.bbm-group-preview {
+    background: #f0f2f5;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.group-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
