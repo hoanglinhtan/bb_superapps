@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Trending Videos</h1>
+<div class="video-grid">
+    {% for video in videos %}
+    <div class="video-item" data-video-id="{{ video.id }}">
+        <img src="{{ video.thumbnail }}" alt="{{ video.title }}">
+        <h3>{{ video.title }}</h3>
+        <p>{{ video.channel }} - {{ video.duration }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

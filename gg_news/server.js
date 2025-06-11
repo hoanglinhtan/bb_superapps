@@ -51,16 +51,13 @@ app.get('/api/image-proxy', async function (req, res) {
     }
 
     try {
-        console.log(response)
         const response = await axios({
             url: imageUrl,
             method: 'GET',
             responseType: 'stream'
         });
-
         // Forward content-type header
         res.set('Content-Type', response.headers['content-type']);
-
         // Pipe the image data to response
         response.data.pipe(res);
     } catch (error) {

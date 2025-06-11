@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search Videos</h1>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search videos...">
+    <button onclick="searchVideos()">Search</button>
+</div>
+<div id="results" class="video-grid"></div>
+{% endblock %}

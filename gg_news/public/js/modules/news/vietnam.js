@@ -6,6 +6,7 @@ var VietnamNewsModule = {
     },
 
     show: function (container) {
+        var self = this; // Store reference to 'this'
         container.innerHTML = '<div class="loading">Loading Vietnam news...</div>';
 
         var xhr = new XMLHttpRequest();
@@ -20,7 +21,7 @@ var VietnamNewsModule = {
 
                     response.articles.forEach(function (article) {
                         html += '<div class="news-item">' +
-                            '    <img class="news-image" src="' + this.getImageUrl(article.urlToImage) +
+                            '    <img class="news-image" src="' + self.getImageUrl(article.urlToImage) +
                             '" alt="News Image" onerror="this.src=\'images/no-image.png\'">' +
                             '    <div class="news-content">' +
                             '        <h3>' + article.title + '</h3>' +
@@ -32,7 +33,7 @@ var VietnamNewsModule = {
                             '        <a href="' + article.url + '" target="_blank" class="read-more">Read More</a>' +
                             '    </div>' +
                             '</div>';
-                    }.bind(this));
+                    });
 
                     html += '</div></div>';
                     container.innerHTML = html;
