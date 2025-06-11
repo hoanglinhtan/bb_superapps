@@ -1,10 +1,16 @@
 from pytube import YouTube
+import yt_dlp
 import ffmpeg
 import os
 import tempfile
 import subprocess
+import logging
 from time import sleep
 from urllib.error import HTTPError
+import ssl
+import certifi
+
+logger = logging.getLogger(__name__)
 
 class VideoService:
     MAX_RETRIES = 3
@@ -52,6 +58,7 @@ class VideoService:
             return None
 
     def stream_3gp(self, video_id):
+        logger.debug(f"Starting video conversion for {video_id}")
         if not self.ffmpeg_path:
             yield self._create_error_message("FFmpeg not found")
             return
@@ -60,38 +67,89 @@ class VideoService:
         temp_output = os.path.join(self.temp_dir, f'output_{video_id}.3gp')
 
         try:
-            # Download YouTube video
+            # Download YouTube video using yt-dlp
             url = f'https://youtube.com/watch?v={video_id}'
-            yt = YouTube(url)
-            stream = (yt.streams
-                     .filter(progressive=True, file_extension='mp4')
-                     .order_by('resolution')
-                     .first())
+            ydl_opts = {
+                'format': 'bv*[height<=480][ext=mp4]+ba[ext=m4a]/b[height<=480][ext=mp4]',  # More flexible format selection
+                'outtmpl': temp_input,
+                'quiet': True,
+                'no_warnings': True,
+                'extract_flat': False,
+                'merge_output_format': 'mp4',
+                'nocheckcertificate': True,
+                'http_headers': {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                    'Accept-Language': 'en-US,en;q=0.5',
+                    'Connection': 'keep-alive',
+                },
+                'socket_timeout': 10,
+                'retries': 3,
+                'fragment_retries': 3,
+                'ignoreerrors': True,
+                # Add SSL context
+                'source_address': '0.0.0.0',
+                'extern_downloader_args': {
+                    'curl': ['--insecure'],
+                },
+                'ssl_cert_file': certifi.where()
+            }
 
-            if not stream:
-                raise Exception("No suitable stream found")
-
-            # Download to temp file
-            stream.download(filename=temp_input)
+            # Set SSL context for the entire process
+            ssl._create_default_https_context = ssl._create_unverified_context
+            
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                logger.debug("Starting video download")
+                try:
+                    info = ydl.extract_info(url, download=False)
+                    available_formats = [f['format_id'] for f in info['formats']]
+                    logger.debug(f"Available formats: {available_formats}")
+                    
+                    # Try to select an available format
+                    for fmt in ['18', '135', '134', '133']:  # Common mobile-friendly formats
+                        if fmt in available_formats:
+                            ydl_opts['format'] = fmt
+                            logger.debug(f"Selected format: {fmt}")
+                            break
+                    
+                    ydl.download([url])
+                except Exception as e:
+                    logger.error(f"Download error: {str(e)}")
+                    # Try alternative method without format selection
+                    ydl_opts['format'] = 'best[ext=mp4]/best'
+                    with yt_dlp.YoutubeDL(ydl_opts) as ydl2:
+                        ydl2.download([url])
 
             # Convert to 3GP using BlackBerry 9930 compatible parameters
-            subprocess.run([
-                self.ffmpeg_path,
-                '-i', temp_input,
-                '-s', '176x144',        # Standard 3GP resolution
-                '-vcodec', 'h263',      # Standard H.263
-                '-r', '12',             # Reduced frame rate for better compatibility
-                '-b:v', '64k',          # Lower video bitrate
-                '-acodec', 'amr_nb',    # Standard AMR-NB audio
-                '-ar', '8000',          
-                '-ac', '1',
-                '-b:a', '12.2k',
-                '-strict', 'experimental',  # Allow experimental codecs
-                '-f', '3gp',            # Force 3GP container
-                '-y',
-                temp_output
-            ], check=True)
-
+            try:
+                logger.debug(f"Running FFmpeg command for {video_id}")
+                process = subprocess.run([
+                    self.ffmpeg_path,
+                    '-i', temp_input,
+                    '-s', '176x144',        # Standard 3GP resolution
+                    '-vcodec', 'h263',      # Standard H.263
+                    '-r', '12',             # Reduced frame rate for better compatibility
+                    '-b:v', '64k',          # Lower video bitrate
+                    '-acodec', 'libopencore_amrnb',  # Explicit codec
+                    '-ar', '8000',          
+                    '-ac', '1',
+                    '-ab', '12.2k',         # Fixed AMR-NB bitrate
+                    '-strict', 'experimental',  # Allow experimental codecs
+                    '-brand', '3gp4',       # 3GPP Release 4
+                    '-f', '3gp',            # Force 3GP container
+                    '-y',
+                    temp_output
+                ], check=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+                
+                logger.debug(f"FFmpeg output: {process.stdout.decode()}")
+                if process.stderr:
+                    logger.warning(f"FFmpeg warnings: {process.stderr.decode()}")
+                    
+            except subprocess.CalledProcessError as e:
+                logger.error(f"FFmpeg error: {e.stderr.decode()}")
+                raise
+            
+            logger.debug(f"Starting to stream converted file: {temp_output}")
             # Stream the converted file
             with open(temp_output, 'rb') as f:
                 while True:
@@ -101,7 +159,7 @@ class VideoService:
                     yield chunk
 
         except Exception as e:
-            print(f"Error streaming video: {str(e)}")
+            logger.exception(f"Error in stream_3gp: {str(e)}")
             yield self._create_error_message(f"Failed to stream video")
 
         finally:
@@ -116,23 +174,35 @@ class VideoService:
     def _create_error_message(self, message):
         temp_error = os.path.join(self.temp_dir, 'error.3gp')
         try:
+            # Create error video in one step
             subprocess.run([
                 self.ffmpeg_path,
                 '-f', 'lavfi',
-                '-i', f'color=c=black:s=176x144:d=5',  # Match H.263 resolution
+                '-i', f'color=c=black:s=176x144:d=5:r=12',  # Fixed framerate
+                '-f', 'lavfi',
+                '-i', 'aevalsrc=0:d=5:s=8000',  # Silent audio
                 '-vf', f'drawtext=text=\'{message}\':fontsize=14:x=(w-text_w)/2:y=(h-text_h)/2:fontcolor=white',
-                '-c:v', 'h263',         # Changed to standard h263
+                '-c:v', 'h263',
+                '-c:a', 'libopencore_amrnb',
+                '-ar', '8000',
+                '-ac', '1',
+                '-ab', '12.2k',
                 '-r', '12',
                 '-b:v', '64k',
-                '-strict', 'experimental',
+                '-shortest',
+                '-brand', '3gp4',
                 '-f', '3gp',
                 '-y',
                 temp_error
-            ], check=True)
+            ], check=True, stderr=subprocess.PIPE)  # Capture errors
 
             with open(temp_error, 'rb') as f:
                 return f.read()
-        except:
+        except subprocess.CalledProcessError as e:
+            print(f"FFmpeg error: {e.stderr.decode()}")
+            return b"Error: Video conversion failed"
+        except Exception as e:
+            print(f"Error creating message: {str(e)}")
             return b"Error: Video conversion failed"
         finally:
             if os.path.exists(temp_error):

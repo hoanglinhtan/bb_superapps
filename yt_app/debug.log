@@ -1,0 +1,478 @@
+2025-06-11 12:51:40,453 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.100.68:5001
+2025-06-11 12:51:40,454 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-11 12:51:40,455 [INFO]  * Restarting with stat
+2025-06-11 12:51:40,818 [WARNING]  * Debugger is active!
+2025-06-11 12:51:40,840 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:51:41,127 [DEBUG] Starting new HTTPS connection (1): youtube.com:443
+2025-06-11 12:51:41,300 [DEBUG] https://youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 301 0
+2025-06-11 12:51:41,303 [DEBUG] Starting new HTTPS connection (1): www.youtube.com:443
+2025-06-11 12:51:41,504 [DEBUG] https://www.youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 200 None
+2025-06-11 12:51:41,981 [INFO] 192.168.100.68 - - [11/Jun/2025 12:51:41] "GET / HTTP/1.1" 200 -
+2025-06-11 12:51:42,002 [INFO] 192.168.100.68 - - [11/Jun/2025 12:51:42] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-06-11 12:51:42,003 [INFO] 192.168.100.68 - - [11/Jun/2025 12:51:42] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-11 12:51:44,550 [DEBUG] Starting video conversion for bNbP4O9b_Ak
+2025-06-11 12:51:44,550 [DEBUG] matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+2025-06-11 12:51:45,997 [ERROR] Error in stream_3gp: HTTP Error 400: Bad Request
+Traceback (most recent call last):
+  File "/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py", line 70, in stream_3gp
+    stream = (yt.streams
+              ^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pytube/__main__.py", line 296, in streams
+    return StreamQuery(self.fmt_streams)
+                       ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pytube/__main__.py", line 176, in fmt_streams
+    stream_manifest = extract.apply_descrambler(self.streaming_data)
+                                                ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pytube/__main__.py", line 157, in streaming_data
+    if 'streamingData' in self.vid_info:
+                          ^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pytube/__main__.py", line 246, in vid_info
+    innertube_response = innertube.player(self.video_id)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pytube/innertube.py", line 448, in player
+    return self._call_api(endpoint, query, self.base_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pytube/innertube.py", line 390, in _call_api
+    response = request._execute_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pytube/request.py", line 37, in _execute_request
+    return urlopen(request, timeout=timeout)  # nosec
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 400: Bad Request
+2025-06-11 12:51:46,161 [INFO] 192.168.100.68 - - [11/Jun/2025 12:51:46] "GET /stream/bNbP4O9b_Ak HTTP/1.1" 200 -
+2025-06-11 12:52:36,164 [INFO]  * Detected change in '/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py', reloading
+2025-06-11 12:52:36,218 [INFO]  * Restarting with stat
+2025-06-11 12:52:59,966 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.100.68:5001
+2025-06-11 12:52:59,966 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-11 12:52:59,967 [INFO]  * Restarting with stat
+2025-06-11 12:53:00,350 [WARNING]  * Debugger is active!
+2025-06-11 12:53:00,358 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:53:10,661 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.100.68:5001
+2025-06-11 12:53:10,661 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-11 12:53:10,662 [INFO]  * Restarting with stat
+2025-06-11 12:53:11,046 [WARNING]  * Debugger is active!
+2025-06-11 12:53:11,054 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:53:13,195 [DEBUG] Starting new HTTPS connection (1): youtube.com:443
+2025-06-11 12:53:13,373 [DEBUG] https://youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 301 0
+2025-06-11 12:53:13,376 [DEBUG] Starting new HTTPS connection (1): www.youtube.com:443
+2025-06-11 12:53:13,549 [DEBUG] https://www.youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 200 None
+2025-06-11 12:53:14,104 [INFO] 192.168.100.68 - - [11/Jun/2025 12:53:14] "GET / HTTP/1.1" 200 -
+2025-06-11 12:53:14,126 [INFO] 192.168.100.68 - - [11/Jun/2025 12:53:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-11 12:53:14,131 [INFO] 192.168.100.68 - - [11/Jun/2025 12:53:14] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-11 12:53:16,065 [DEBUG] Starting video conversion for bNbP4O9b_Ak
+2025-06-11 12:53:16,194 [DEBUG] Starting video download
+2025-06-11 12:53:18,829 [ERROR] Error in stream_3gp: [0;31mERROR:[0m [youtube] bNbP4O9b_Ak: Requested format is not available. Use --list-formats for a list of available formats
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1567, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1723, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1782, in process_ie_result
+    ie_result = self.process_video_result(ie_result, download=download)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 2884, in process_video_result
+    raise ExtractorError(
+yt_dlp.utils.ExtractorError: [youtube] bNbP4O9b_Ak: Requested format is not available. Use --list-formats for a list of available formats
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py", line 79, in stream_3gp
+    ydl.download([url])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3511, in download
+    self.__download_wrapper(self.extract_info)(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3486, in wrapper
+    res = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1556, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1585, in wrapper
+    self.report_error(str(e), e.format_traceback())
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1045, in report_error
+    self.trouble(f'{self._format_err("ERROR:", self.Styles.ERROR)} {message}', *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 984, in trouble
+    raise DownloadError(message, exc_info)
+yt_dlp.utils.DownloadError: [0;31mERROR:[0m [youtube] bNbP4O9b_Ak: Requested format is not available. Use --list-formats for a list of available formats
+2025-06-11 12:53:18,971 [INFO] 192.168.100.68 - - [11/Jun/2025 12:53:18] "GET /stream/bNbP4O9b_Ak HTTP/1.1" 200 -
+2025-06-11 12:54:11,074 [INFO]  * Detected change in '/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py', reloading
+2025-06-11 12:54:11,169 [INFO]  * Restarting with stat
+2025-06-11 12:54:11,643 [WARNING]  * Debugger is active!
+2025-06-11 12:54:11,652 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:54:13,672 [INFO]  * Detected change in '/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py', reloading
+2025-06-11 12:54:13,741 [INFO]  * Restarting with stat
+2025-06-11 12:54:14,152 [WARNING]  * Debugger is active!
+2025-06-11 12:54:14,160 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:54:17,058 [DEBUG] Starting new HTTPS connection (1): youtube.com:443
+2025-06-11 12:54:17,247 [DEBUG] https://youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 301 0
+2025-06-11 12:54:17,251 [DEBUG] Starting new HTTPS connection (1): www.youtube.com:443
+2025-06-11 12:54:17,462 [DEBUG] https://www.youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 200 None
+2025-06-11 12:54:17,828 [INFO] 192.168.100.68 - - [11/Jun/2025 12:54:17] "GET / HTTP/1.1" 200 -
+2025-06-11 12:54:17,848 [INFO] 192.168.100.68 - - [11/Jun/2025 12:54:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-11 12:54:17,852 [INFO] 192.168.100.68 - - [11/Jun/2025 12:54:17] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-11 12:54:24,186 [DEBUG] Starting video conversion for bNbP4O9b_Ak
+2025-06-11 12:54:24,316 [DEBUG] Starting video download
+2025-06-11 12:54:27,082 [ERROR] Download error: [0;31mERROR:[0m [youtube] bNbP4O9b_Ak: Requested format is not available. Use --list-formats for a list of available formats
+2025-06-11 12:54:30,900 [DEBUG] Running FFmpeg command for bNbP4O9b_Ak
+2025-06-11 12:54:31,061 [ERROR] FFmpeg error: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 16.0.0 (clang-1600.0.26.6)
+  configuration: --prefix=/usr/local/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x7fe8aa006480] Format mov,mp4,m4a,3gp,3g2,mj2 detected only with low score of 1, misdetection possible!
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x7fe8aa006480] moov atom not found
+[in#0 @ 0x7fe8aa0061c0] Error opening input: Invalid data found when processing input
+Error opening input file /var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmph5kjrxrr/input_bNbP4O9b_Ak.mp4.
+Error opening input files: Invalid data found when processing input
+
+2025-06-11 12:54:31,062 [ERROR] Error in stream_3gp: Command '['/usr/local/bin/ffmpeg', '-i', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmph5kjrxrr/input_bNbP4O9b_Ak.mp4', '-s', '176x144', '-vcodec', 'h263', '-r', '12', '-b:v', '64k', '-acodec', 'libopencore_amrnb', '-ar', '8000', '-ac', '1', '-ab', '12.2k', '-strict', 'experimental', '-brand', '3gp4', '-f', '3gp', '-y', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmph5kjrxrr/output_bNbP4O9b_Ak.3gp']' returned non-zero exit status 183.
+Traceback (most recent call last):
+  File "/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py", line 99, in stream_3gp
+    process = subprocess.run([
+              ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/local/bin/ffmpeg', '-i', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmph5kjrxrr/input_bNbP4O9b_Ak.mp4', '-s', '176x144', '-vcodec', 'h263', '-r', '12', '-b:v', '64k', '-acodec', 'libopencore_amrnb', '-ar', '8000', '-ac', '1', '-ab', '12.2k', '-strict', 'experimental', '-brand', '3gp4', '-f', '3gp', '-y', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmph5kjrxrr/output_bNbP4O9b_Ak.3gp']' returned non-zero exit status 183.
+2025-06-11 12:54:31,203 [INFO] 192.168.100.68 - - [11/Jun/2025 12:54:31] "GET /stream/bNbP4O9b_Ak HTTP/1.1" 200 -
+2025-06-11 12:54:52,950 [DEBUG] Starting video conversion for frWzmvEHr4g
+2025-06-11 12:54:53,034 [DEBUG] Starting video download
+2025-06-11 12:54:55,057 [DEBUG] Available formats: ['sb3', 'sb2', 'sb1', 'sb0', '18']
+2025-06-11 12:54:56,410 [ERROR] Download error: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2025-06-11 12:54:58,714 [ERROR] Error in stream_3gp: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 4052, in urlopen
+    return self._request_director.send(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/networking/common.py", line 114, in send
+    response = handler.send(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/networking/_helper.py", line 204, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/networking/common.py", line 325, in send
+    return self._send(request)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/networking/_requests.py", line 341, in _send
+    raise HTTPError(res, redirect_loop=max_redirects_exceeded)
+yt_dlp.networking.exceptions.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3388, in process_info
+    success, real_download = self.dl(temp_filename, info_dict)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3109, in dl
+    return fd.download(name, new_info, subtitle)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/downloader/common.py", line 455, in download
+    ret = self.real_download(filename, info_dict)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/downloader/http.py", line 364, in real_download
+    establish_connection()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/downloader/http.py", line 120, in establish_connection
+    ctx.data = self.ydl.urlopen(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 4074, in urlopen
+    raise _CompatHTTPError(e) from e
+yt_dlp.networking.exceptions._CompatHTTPError: HTTP Error 403: Forbidden
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py", line 88, in stream_3gp
+    ydl.download([url])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3511, in download
+    self.__download_wrapper(self.extract_info)(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3486, in wrapper
+    res = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1556, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1567, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1723, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1782, in process_ie_result
+    ie_result = self.process_video_result(ie_result, download=download)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 2922, in process_video_result
+    self.process_info(new_info)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3397, in process_info
+    self.report_error('unable to download video data: %s' % error_to_compat_str(err))
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1045, in report_error
+    self.trouble(f'{self._format_err("ERROR:", self.Styles.ERROR)} {message}', *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 984, in trouble
+    raise DownloadError(message, exc_info)
+yt_dlp.utils.DownloadError: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 4052, in urlopen
+    return self._request_director.send(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/networking/common.py", line 114, in send
+    response = handler.send(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/networking/_helper.py", line 204, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/networking/common.py", line 325, in send
+    return self._send(request)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/networking/_requests.py", line 341, in _send
+    raise HTTPError(res, redirect_loop=max_redirects_exceeded)
+yt_dlp.networking.exceptions.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3388, in process_info
+    success, real_download = self.dl(temp_filename, info_dict)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3109, in dl
+    return fd.download(name, new_info, subtitle)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/downloader/common.py", line 455, in download
+    ret = self.real_download(filename, info_dict)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/downloader/http.py", line 364, in real_download
+    establish_connection()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/downloader/http.py", line 120, in establish_connection
+    ctx.data = self.ydl.urlopen(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 4074, in urlopen
+    raise _CompatHTTPError(e) from e
+yt_dlp.networking.exceptions._CompatHTTPError: HTTP Error 403: Forbidden
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py", line 94, in stream_3gp
+    ydl2.download([url])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3511, in download
+    self.__download_wrapper(self.extract_info)(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3486, in wrapper
+    res = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1556, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1567, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1723, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1782, in process_ie_result
+    ie_result = self.process_video_result(ie_result, download=download)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 2922, in process_video_result
+    self.process_info(new_info)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 3397, in process_info
+    self.report_error('unable to download video data: %s' % error_to_compat_str(err))
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 1045, in report_error
+    self.trouble(f'{self._format_err("ERROR:", self.Styles.ERROR)} {message}', *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/yt_dlp/YoutubeDL.py", line 984, in trouble
+    raise DownloadError(message, exc_info)
+yt_dlp.utils.DownloadError: [0;31mERROR:[0m unable to download video data: HTTP Error 403: Forbidden
+2025-06-11 12:54:58,874 [INFO] 192.168.100.68 - - [11/Jun/2025 12:54:58] "GET /stream/frWzmvEHr4g HTTP/1.1" 200 -
+2025-06-11 12:56:16,514 [INFO]  * Detected change in '/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py', reloading
+2025-06-11 12:56:16,664 [INFO]  * Restarting with stat
+2025-06-11 12:56:17,219 [WARNING]  * Debugger is active!
+2025-06-11 12:56:17,228 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:56:18,242 [INFO]  * Detected change in '/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py', reloading
+2025-06-11 12:56:18,309 [INFO]  * Restarting with stat
+2025-06-11 12:56:18,719 [WARNING]  * Debugger is active!
+2025-06-11 12:56:18,727 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:56:22,621 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.100.68:5001
+2025-06-11 12:56:22,621 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-11 12:56:22,622 [INFO]  * Restarting with stat
+2025-06-11 12:56:23,002 [WARNING]  * Debugger is active!
+2025-06-11 12:56:23,010 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:56:24,632 [DEBUG] Starting new HTTPS connection (1): youtube.com:443
+2025-06-11 12:56:24,916 [DEBUG] https://youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 301 0
+2025-06-11 12:56:24,925 [DEBUG] Starting new HTTPS connection (1): www.youtube.com:443
+2025-06-11 12:56:26,088 [DEBUG] https://www.youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 200 None
+2025-06-11 12:56:26,563 [INFO] 192.168.100.68 - - [11/Jun/2025 12:56:26] "GET / HTTP/1.1" 200 -
+2025-06-11 12:56:26,580 [INFO] 192.168.100.68 - - [11/Jun/2025 12:56:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-11 12:56:26,588 [INFO] 192.168.100.68 - - [11/Jun/2025 12:56:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2025-06-11 12:56:28,387 [DEBUG] Starting video conversion for bNbP4O9b_Ak
+2025-06-11 12:56:28,520 [DEBUG] Starting video download
+2025-06-11 12:56:29,881 [ERROR] Download error: 'NoneType' object is not subscriptable
+2025-06-11 12:56:31,447 [DEBUG] Running FFmpeg command for bNbP4O9b_Ak
+2025-06-11 12:56:31,550 [ERROR] FFmpeg error: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 16.0.0 (clang-1600.0.26.6)
+  configuration: --prefix=/usr/local/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[in#0 @ 0x7fb32b0060c0] Error opening input: No such file or directory
+Error opening input file /var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmp8bbjnun4/input_bNbP4O9b_Ak.mp4.
+Error opening input files: No such file or directory
+
+2025-06-11 12:56:31,551 [ERROR] Error in stream_3gp: Command '['/usr/local/bin/ffmpeg', '-i', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmp8bbjnun4/input_bNbP4O9b_Ak.mp4', '-s', '176x144', '-vcodec', 'h263', '-r', '12', '-b:v', '64k', '-acodec', 'libopencore_amrnb', '-ar', '8000', '-ac', '1', '-ab', '12.2k', '-strict', 'experimental', '-brand', '3gp4', '-f', '3gp', '-y', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmp8bbjnun4/output_bNbP4O9b_Ak.3gp']' returned non-zero exit status 254.
+Traceback (most recent call last):
+  File "/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py", line 115, in stream_3gp
+    process = subprocess.run([
+              ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/local/bin/ffmpeg', '-i', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmp8bbjnun4/input_bNbP4O9b_Ak.mp4', '-s', '176x144', '-vcodec', 'h263', '-r', '12', '-b:v', '64k', '-acodec', 'libopencore_amrnb', '-ar', '8000', '-ac', '1', '-ab', '12.2k', '-strict', 'experimental', '-brand', '3gp4', '-f', '3gp', '-y', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmp8bbjnun4/output_bNbP4O9b_Ak.3gp']' returned non-zero exit status 254.
+2025-06-11 12:56:31,693 [INFO] 192.168.100.68 - - [11/Jun/2025 12:56:31] "GET /stream/bNbP4O9b_Ak HTTP/1.1" 200 -
+2025-06-11 12:57:18,346 [INFO]  * Detected change in '/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py', reloading
+2025-06-11 12:57:18,432 [INFO]  * Restarting with stat
+2025-06-11 12:57:18,869 [WARNING]  * Debugger is active!
+2025-06-11 12:57:18,878 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:57:20,897 [INFO]  * Detected change in '/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py', reloading
+2025-06-11 12:57:20,965 [INFO]  * Restarting with stat
+2025-06-11 12:57:21,494 [WARNING]  * Debugger is active!
+2025-06-11 12:57:21,504 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 12:57:29,875 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.100.68:5001
+2025-06-11 12:57:29,885 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-11 12:57:29,886 [INFO]  * Restarting with stat
+2025-06-11 12:57:30,394 [WARNING]  * Debugger is active!
+2025-06-11 12:57:30,419 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 13:03:57,229 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.100.68:5001
+2025-06-11 13:03:57,229 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-11 13:03:57,230 [INFO]  * Restarting with stat
+2025-06-11 13:03:57,641 [WARNING]  * Debugger is active!
+2025-06-11 13:03:57,651 [INFO]  * Debugger PIN: 749-803-456
+2025-06-11 13:04:03,456 [DEBUG] Starting new HTTPS connection (1): youtube.com:443
+2025-06-11 13:04:03,794 [DEBUG] https://youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 301 0
+2025-06-11 13:04:03,797 [DEBUG] Starting new HTTPS connection (1): www.youtube.com:443
+2025-06-11 13:04:04,058 [DEBUG] https://www.youtube.com:443 "GET /results?search_query=trending HTTP/1.1" 200 None
+2025-06-11 13:04:04,579 [INFO] 192.168.100.142 - - [11/Jun/2025 13:04:04] "GET / HTTP/1.1" 200 -
+2025-06-11 13:04:04,998 [INFO] 192.168.100.142 - - [11/Jun/2025 13:04:04] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-11 13:04:05,053 [INFO] 192.168.100.142 - - [11/Jun/2025 13:04:05] "GET /static/js/main.js HTTP/1.1" 200 -
+2025-06-11 13:04:07,043 [ERROR] Unhandled exception:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-06-11 13:04:07,051 [INFO] 192.168.100.142 - - [11/Jun/2025 13:04:07] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-06-11 13:04:08,581 [DEBUG] Starting video conversion for x202C7sTIDc
+2025-06-11 13:04:08,710 [DEBUG] Starting video download
+2025-06-11 13:04:10,125 [ERROR] Download error: 'NoneType' object is not subscriptable
+2025-06-11 13:04:11,577 [DEBUG] Running FFmpeg command for x202C7sTIDc
+2025-06-11 13:04:11,905 [ERROR] FFmpeg error: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 16.0.0 (clang-1600.0.26.6)
+  configuration: --prefix=/usr/local/Cellar/ffmpeg/7.1.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[in#0 @ 0x7faecc807140] Error opening input: No such file or directory
+Error opening input file /var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmpqdphrjjn/input_x202C7sTIDc.mp4.
+Error opening input files: No such file or directory
+
+2025-06-11 13:04:11,906 [ERROR] Error in stream_3gp: Command '['/usr/local/bin/ffmpeg', '-i', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmpqdphrjjn/input_x202C7sTIDc.mp4', '-s', '176x144', '-vcodec', 'h263', '-r', '12', '-b:v', '64k', '-acodec', 'libopencore_amrnb', '-ar', '8000', '-ac', '1', '-ab', '12.2k', '-strict', 'experimental', '-brand', '3gp4', '-f', '3gp', '-y', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmpqdphrjjn/output_x202C7sTIDc.3gp']' returned non-zero exit status 254.
+Traceback (most recent call last):
+  File "/Users/mvvj2/Workspaces/MySuperApps/BBSuperApps/yt_app/services/video_service.py", line 126, in stream_3gp
+    process = subprocess.run([
+              ^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/local/bin/ffmpeg', '-i', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmpqdphrjjn/input_x202C7sTIDc.mp4', '-s', '176x144', '-vcodec', 'h263', '-r', '12', '-b:v', '64k', '-acodec', 'libopencore_amrnb', '-ar', '8000', '-ac', '1', '-ab', '12.2k', '-strict', 'experimental', '-brand', '3gp4', '-f', '3gp', '-y', '/var/folders/s5/h5drbb9n7nbg4j_kzwgh7fg80000gn/T/tmpqdphrjjn/output_x202C7sTIDc.3gp']' returned non-zero exit status 254.
+2025-06-11 13:04:12,136 [INFO] 192.168.100.142 - - [11/Jun/2025 13:04:12] "GET /stream/x202C7sTIDc HTTP/1.1" 200 -
+2025-06-11 13:04:12,589 [ERROR] Unhandled exception:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-06-11 13:04:12,591 [INFO] 192.168.100.142 - - [11/Jun/2025 13:04:12] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-06-11 13:04:14,556 [ERROR] Unhandled exception:
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1458, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/app.py", line 1440, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/flask/ctx.py", line 353, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/werkzeug/routing/map.py", line 655, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-06-11 13:04:14,558 [INFO] 192.168.100.142 - - [11/Jun/2025 13:04:14] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
